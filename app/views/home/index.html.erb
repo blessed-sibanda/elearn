@@ -1,2 +1,27 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="columns">
+  <aside class="column is-one-quarter-desktop">
+    <p class="menu-label">Subjects</p>
+    <ul class="menu-list">
+      <% Subject.all.each do |subject| %>
+        <li>
+          <%= link_to subject.title, '#' %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+  <main class='column is-three-quarters-tablet'>
+    <% Course.all.each do |course| %>
+      <div class="card is-fullwidth my-3">
+        <div class="card-content pt-2 pb-3">
+          <h3 class="is-size-3 has-text-weight-light">
+            <%= link_to course.title, '#' %>
+          </h3>
+          <p class='mt-2'>
+            <%= link_to course.subject.title, '#' %>.
+            Instructor: <%= link_to course.owner.full_name, '#' %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </main>
+</div>
