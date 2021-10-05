@@ -13,4 +13,9 @@
 #  index_subjects_on_slug  (slug) UNIQUE
 #
 class Subject < ApplicationRecord
+  validates :slug, uniqueness: true
+
+  before_save do
+    self.slug = title.parameterize unless slug
+  end
 end

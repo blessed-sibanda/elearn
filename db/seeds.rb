@@ -5,3 +5,44 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+blessed = User.create!(
+  first_name: "Blessed",
+  last_name: "Sibanda",
+  email: "blessed@example.com",
+  password: "1234pass",
+  confirmed_at: Time.zone.now,
+)
+
+mike = User.create!(
+  first_name: "Michael",
+  last_name: "Mutopa",
+  email: "myk@example.com",
+  password: "1234pass",
+  confirmed_at: Time.zone.now,
+)
+
+maths = Subject.create!(title: "Mathematics")
+Subject.create!(title: "Engineering")
+web = Subject.create!(title: "Web Development")
+
+Course.create!(
+  subject: web,
+  title: "Full Stack Development with Django",
+  overview: "The complete guide to the django web framework",
+  owner: blessed,
+)
+
+Course.create!(
+  subject: maths,
+  title: "Engineering Mathematics",
+  overview: "Advanced mathematical principles for engineers and scientists",
+  owner: mike,
+)
+
+Course.create!(
+  subject: web,
+  title: "Complete Rails 6",
+  overview: "The comprehensive course on Ruby on Rails 6",
+  owner: blessed,
+)
