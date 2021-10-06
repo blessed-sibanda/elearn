@@ -12,8 +12,6 @@ Rails.start();
 Turbolinks.start();
 ActiveStorage.start();
 
-// import 'controllers';
-
 require('trix');
 require('@rails/actiontext');
 

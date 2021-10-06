@@ -22,6 +22,7 @@
 #  fk_rails_...  (subject_id => subjects.id)
 #
 class Course < ApplicationRecord
+  self.per_page = 8
   belongs_to :subject
   belongs_to :owner, class_name: "User"
 

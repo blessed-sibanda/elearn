@@ -46,3 +46,12 @@ Course.create!(
   overview: "The comprehensive course on Ruby on Rails 6",
   owner: blessed,
 )
+
+30.times do |i|
+  Course.create!(
+    subject: Subject.all.sample,
+    title: Faker::Lorem.words(number: rand(2..5)).join(" ").capitalize,
+    overview: Faker::Lorem.paragraphs(number: 4).join,
+    owner: blessed,
+  )
+end

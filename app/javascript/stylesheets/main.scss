@@ -1,36 +1,17 @@
 @import '~bulma/sass/utilities/initial-variables';
+@import '~bulmaswatch/pulse/_variables';
 
-// Set your brand colors
-$purple: #8a4d76;
-$pink: #ee86c3e0;
-$brown: #757763;
-$beige-light: #d0d1cd;
-$beige-lighter: #eff0eb;
-
-// Update Bulma's global variables
-$family-sans-serif: 'Nunito', sans-serif;
-$grey-dark: $brown;
-$grey-light: $beige-light;
-$primary: $purple;
-$link: $pink;
-$widescreen-enabled: false;
-$fullhd-enabled: false;
-
-// Update some of Bulma's component variables
-$body-background-color: $beige-lighter;
-$control-border-width: 2px;
-$input-border-color: transparent;
-$input-shadow: none;
-// $card-shadow: none;
-$card-content-padding: 1.2rem;
-
-$title-weight: 300;
-$title-size: 2rem;
-$menu-item-radius: 3px;
-
-$menu-item-color: $grey;
-$menu-item-hover-background-color: transparent;
-$menu-item-active-background-color: $white;
-$menu-item-active-color: $black;
-
+$menu-item-active-background-color: $link;
 @import '~bulma';
+
+@import '~bulmaswatch/pulse/_overrides';
+
+.field_with_errors {
+  input[type='text'],
+  input[type='email'],
+  input[type='password'],
+  textarea {
+    border: 2px solid $red;
+    color: $red;
+  }
+}

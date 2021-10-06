@@ -10,6 +10,7 @@
     "axios": "^0.22.0",
     "bootstrap-icons": "^1.5.0",
     "bulma": "^0.9.3",
+    "bulmaswatch": "^0.8.1",
     "moment": "^2.29.1",
     "stimulus": "^3.0.0",
     "trix": "^1.2.0",
