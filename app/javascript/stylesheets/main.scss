@@ -1,6 +1,8 @@
+@import '~bulma/sass/utilities/initial-variables';
+
 // Set your brand colors
 $purple: #8a4d76;
-$pink: #fa7c91;
+$pink: #ee86c3e0;
 $brown: #757763;
 $beige-light: #d0d1cd;
 $beige-lighter: #eff0eb;
@@ -19,11 +21,16 @@ $body-background-color: $beige-lighter;
 $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;
-$card-shadow: none;
+// $card-shadow: none;
 $card-content-padding: 1.2rem;
 
 $title-weight: 300;
 $title-size: 2rem;
 $menu-item-radius: 3px;
+
+$menu-item-color: $grey;
+$menu-item-hover-background-color: transparent;
+$menu-item-active-background-color: $white;
+$menu-item-active-color: $black;
 
 @import '~bulma';
