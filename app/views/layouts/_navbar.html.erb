@@ -12,9 +12,9 @@
     </div>
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <%= link_to 'Home', root_path, class: 'navbar-item' %>
+        <%= link_to 'Home', root_path, class: "navbar-item #{'is-active' if is_home_page?}" %>
         <% if user_signed_in? %>
-          <%= link_to 'Dashboard', dashboard_index_path, class: 'navbar-item' %>
+          <%= link_to 'Dashboard', dashboard_index_path, class: "navbar-item #{'is-active' if is_dashboard_page?}" %>
         <% end %>
       </div>
       <div class="navbar-end">

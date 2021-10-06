@@ -2,22 +2,22 @@
 <ul class="menu-list">
   <li>
     <%= link_to 'Home', dashboard_index_path, 
-          class: "#{'is-active' if @active=='index'}"  %>
+          class: "#{'is-active' if is_dashboard_index_page?}"  %>
   </li>
   <li>
     <%= link_to 'Courses', dashboard_courses_path,
-      class: "#{'is-active' if @active=='courses'}" %>
+      class: "#{'is-active' if is_dashboard_courses_page?}" %>
   </li>
   <li>
     <%= link_to 'Students', dashboard_students_path,
-      class: "#{'is-active' if @active=='students'}" %>
+      class: "#{'is-active' if is_dashboard_students_page?}" %>
   </li>
   <li>
     <%= link_to 'Notifications', dashboard_notifications_path,
-      class: "#{'is-active' if @active=='notifications'}" %>
+      class: "#{'is-active' if is_dashboard_notifications_page?}" %>
   </li>
   <li>
     <%= link_to 'Messages', dashboard_messages_path,
-      class: "#{'is-active' if @active=='messages'}" %>
+      class: "#{'is-active' if is_dashboard_messages_page?}" %>
   </li>
 </ul>
