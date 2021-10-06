@@ -14,8 +14,13 @@
 #
 class Subject < ApplicationRecord
   validates :slug, uniqueness: true
+  has_many :courses
 
   before_save do
     self.slug = title.parameterize unless slug
   end
+
+  scope :with_courses, -> {
+          joins(:courses).group(:id)
+        }
 end
