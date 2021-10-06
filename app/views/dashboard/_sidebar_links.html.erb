@@ -5,8 +5,11 @@
           class: "#{'is-active' if is_dashboard_index_page?}"  %>
   </li>
   <li>
-    <%= link_to 'Courses', dashboard_courses_path,
-      class: "#{'is-active' if is_dashboard_courses_page?}" %>
+    <%= link_to dashboard_courses_path,
+      class: "#{'is-active' if is_dashboard_courses_page?}" do %>
+      <%= content_tag :span, 'Courses' %>
+      <%= content_tag :span, current_user.courses.count, class: 'help is-pulled-right' %>
+    <% end %>
   </li>
   <li>
     <%= link_to 'Students', dashboard_students_path,

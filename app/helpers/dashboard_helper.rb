@@ -1,11 +1,11 @@
 module DashboardHelper
-  def metric(count, item, color: "primary")
+  def metric(count, item, color: "primary", link: "#")
     item.capitalize!
     unless count == 1
       item = item.pluralize
     end
     render partial: "dashboard/metric",
-           locals: { count: count, item: item, color: "is-#{color}" }
+           locals: { count: count, item: item, color: "is-#{color}", link: link }
   end
 
   def course_stats(title, courses)

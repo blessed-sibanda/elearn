@@ -16,7 +16,8 @@ module ApplicationHelper
   end
 
   def is_dashboard_courses_page?
-    is_dashboard_page? && controller.action_name == "courses"
+    (is_dashboard_page? && controller.action_name == "courses") \
+      || controller.controller_name == "courses"
   end
 
   def is_dashboard_notifications_page?

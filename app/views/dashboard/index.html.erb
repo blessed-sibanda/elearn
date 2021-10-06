@@ -1,8 +1,8 @@
 <div class="columns is-multiline">
-  <%= metric(rand(0..5), 'Course', color: 'primary') %>
+  <%= metric(current_user.courses.count, 'Course', color: 'primary', link: dashboard_courses_path) %>
   <%= metric(rand(0..20),'Student', color: 'link') %>
   <%= metric(rand(0..10),'notification', color: 'danger') %>
-  <%= metric(rand(0..10),'message', color: 'primary') %>
+  <%= metric(rand(0..10),'message', color: 'info') %>
   <%= course_stats('Popular', Course.all.sample(3)) %>
   <%= course_stats('Latest', Course.all.sample(3)) %>
 </div>

@@ -1,2 +1,14 @@
-<h1>Dashboard#courses</h1>
-<p>Find me in app/views/dashboard/courses.html.erb</p>
+<div class="level">
+  <div class="level-left">
+    <div class="level-item">
+      <h1 class='title'>Courses</h1>
+    </div>
+  </div>
+  <div class="level-left">
+    <div class="level-item">
+      <%= link_to 'Create Course', new_course_path, class: 'button is-primary' %>
+    </div>
+  </div>
+</div>
+<%= render @courses %>
+<%= will_paginate @courses, renderer: BulmaPagination::Rails %>

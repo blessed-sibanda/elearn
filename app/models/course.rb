@@ -26,6 +26,8 @@ class Course < ApplicationRecord
   belongs_to :subject
   belongs_to :owner, class_name: "User"
 
+  validates :title, :overview, presence: true
+
   before_save do
     self.slug = title.parameterize unless slug
   end
