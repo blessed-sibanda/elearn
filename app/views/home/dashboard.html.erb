@@ -1,0 +1,35 @@
+<div class="columns">
+  <aside class="column is-one-quarter-desktop">
+    <p class="menu-label">Dashboard</p>
+    <ul class="menu-list">
+      <li>
+        <%= link_to 'Home', root_path, 
+          class: "#{'is-active' if @subject.nil?}"  %>
+      </li>
+      <li>
+        <%= link_to 'Courses', '#' %>
+      </li>
+      <li>
+        <%= link_to 'Students', '#' %>
+      </li>
+      <li>
+        <%= link_to 'Notifications', '#' %>
+      </li>
+      <li>
+        <%= link_to 'Messages', '#' %>
+      </li>
+    </ul>
+  </aside>
+  <main class='column is-three-quarters-tablet'>
+    <div class="columns is-multiline">
+      <%= metric(count: rand(0..5), item: 'Course', 
+        color: 'primary') %>
+      <%= metric(count: rand(0..20), item: 'Student', 
+        color: 'link') %>
+      <%= metric(count: rand(0..10), item: 'notification', 
+        color: 'danger') %>
+      <%= metric(count: rand(0..10), item: 'message', 
+        color: 'primary') %>
+    </div>
+  </main>
+</div>
