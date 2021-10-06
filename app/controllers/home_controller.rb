@@ -8,7 +8,4 @@ class HomeController < ApplicationController
       @courses = Course.page(params["page"])
     end
   end
-
-  def dashboard
-  end
 end

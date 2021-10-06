@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+  <%= render 'layouts/head' %>
+  <body>
+    <%= render 'layouts/navbar' %>
+    <%= render 'layouts/alerts' %>
+    <div class="container py-4">
+      <div class="columns">
+        <aside class="column is-one-quarter-desktop">
+          <%= render 'sidebar_links' %>
+        </aside>
+        <main class='column is-three-quarters-tablet'>
+          <%= yield %>
+        </main>
+      </div>
+    </div>
+    <%= render 'layouts/footer' %>
+  </body>
+</html>

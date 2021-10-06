@@ -1,0 +1,23 @@
+<p class="menu-label">Dashboard</p>
+<ul class="menu-list">
+  <li>
+    <%= link_to 'Home', dashboard_index_path, 
+          class: "#{'is-active' if @active=='index'}"  %>
+  </li>
+  <li>
+    <%= link_to 'Courses', dashboard_courses_path,
+      class: "#{'is-active' if @active=='courses'}" %>
+  </li>
+  <li>
+    <%= link_to 'Students', dashboard_students_path,
+      class: "#{'is-active' if @active=='students'}" %>
+  </li>
+  <li>
+    <%= link_to 'Notifications', dashboard_notifications_path,
+      class: "#{'is-active' if @active=='notifications'}" %>
+  </li>
+  <li>
+    <%= link_to 'Messages', dashboard_messages_path,
+      class: "#{'is-active' if @active=='messages'}" %>
+  </li>
+</ul>
