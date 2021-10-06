@@ -1,0 +1,9 @@
+<li>
+  <%= link_to subject_courses_path(subject.slug), 
+            class: "#{'is-active' if subject==@subject}" do %>
+    <span><%= subject.title %></span>
+    <span class="help is-dark is-pulled-right">
+      <%= subject.courses.count %>
+    </span>
+  <% end %>
+</li>

@@ -1,0 +1,12 @@
+<div class="card is-fullwidth my-3 pt-2">
+  <div class="card-content pt-3 pb-4">
+    <h3 class="title is-size-4 has-text-weight-normal">
+      <%= link_to course.title, '#' %>
+    </h3>
+    <p class='mt-1'>
+      <%= link_to course.subject.title, 
+              subject_courses_path(course.subject.slug) %>.
+      Instructor: <%= link_to course.owner.full_name, '#' %>
+    </p>
+  </div>
+</div>

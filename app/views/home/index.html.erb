@@ -6,71 +6,11 @@
         <%= link_to 'All', root_path, 
           class: "#{'is-active' if @subject.nil?}"  %>
       </li>
-      <% @subjects.each do |subject| %>
-        <li>
-          <%= link_to subject_courses_path(subject.slug), 
-            class: "#{'is-active' if subject==@subject}" do %>
-            <span><%= subject.title %></span>
-            <span class="help is-dark is-pulled-right">
-              <%= subject.courses.count %>
-            </span>
-          <% end %>
-        </li>
-      <% end %>
+      <%= render @subjects %>
     </ul>
   </aside>
   <main class='column is-three-quarters-tablet'>
-    <nav class="level">
-      <div class="level-left">
-        <div class="level-item is-hidden-tablet-only">
-          <div class="field has-addons">
-            <p class="control">
-              <input class="input" type="text" placeholder="Course title, subject etc...">
-            </p>
-            <p class="control">
-              <button class="button is-link">
-                Search
-              </button>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="level-right">
-        <div class="level-item">
-          Order by
-        </div>
-        <div class="level-item">
-          <div class="select">
-            <select>
-              <option>Date</option>
-              <option>Price</option>
-              <option>Students</option>
-            </select>
-          </div>
-        </div>
-        <div class="level-item">
-          <div class="select">
-            <select>
-              <option>Asc</option>
-              <option>Desc</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <% @courses.each do |course| %>
-      <div class="card is-fullwidth my-3 pt-2">
-        <div class="card-content pt-3 pb-4">
-          <h3 class="title is-size-4 has-text-weight-normal">
-            <%= link_to course.title, '#' %>
-          </h3>
-          <p class='mt-1'>
-            <%= link_to course.subject.title, 
-              subject_courses_path(course.subject.slug) %>.
-            Instructor: <%= link_to course.owner.full_name, '#' %>
-          </p>
-        </div>
-      </div>
-    <% end %>
+    <%= render 'toolbar' %>
+    <%= render @courses %>
   </main>
 </div>
