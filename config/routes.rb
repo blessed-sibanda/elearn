@@ -10,7 +10,9 @@ Rails.application.routes.draw do
       get "notifications" => :notifications, as: :dashboard_notifications
       get "messages" => :messages, as: :dashboard_messages
     end
-    resources :courses, except: :index
+    resources :courses, except: :index, param: :slug, path: "c" do
+      resources :modules, except: :index, path: "m"
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

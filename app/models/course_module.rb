@@ -23,6 +23,7 @@ class CourseModule < ApplicationRecord
   belongs_to :course
   validates :title, :description, presence: true
   validates :title, uniqueness: true
+  has_rich_text :content
 
   before_create do
     self.order = 1 + course.modules.pluck(:order).reject(&:nil?).max.to_i

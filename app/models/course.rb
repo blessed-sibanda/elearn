@@ -46,6 +46,10 @@ class Course < ApplicationRecord
   scope :published, -> { where(status: "Published") }
   scope :by_status, ->(status = nil) { where(status: status.capitalize) if statuses.keys.include?(status&.capitalize) }
 
+  def to_param
+    slug
+  end
+
   def is_draft?
     status == "Draft"
   end

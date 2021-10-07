@@ -1,0 +1,47 @@
+<div class="columns">
+  <main class='column is-three-quarters-tablet'>
+    <h1 class="title"><%= @course.title %></h1>
+    <div class="subtitle is-size-5 my-4"><%= @course.overview %></div>
+    <hr>
+    <div class="level">
+      <div class="level-left">
+        <h2 class="subtitle is-size-3 has-text-weight-light">Modules</h2>
+      </div>
+      <div class="level-right">
+        <%= link_to 'New Module', new_course_module_path(@course), class: 'button is-outlined is-primary' %>
+      </div>
+    </div>
+    <% @course.modules.each do |m| %>
+      <div class="box p-3 is-shadowless my-1">
+        <h3 class="title is-size-5"><%= link_to "#{m.order}. #{m.title}", course_module_path(m.course, m) %></h3>
+        <div class="content"><%= m.description %></div>
+      </div>
+      <hr class='py-0 my-0'>
+    <% end %>
+  </main>
+  <aside class="column is-one-quarter-desktop">
+    <div class="">
+      <table class="table">
+        <tbody>
+          <th>Instructor</th>
+          <td><%= @course.owner.full_name %></td>
+          <tr>
+            <th>Date</th>
+            <td><%= @course.created_at.strftime('%d %b, %Y') %></td>
+          </tr>
+          <tr>
+            <th>Students</th>
+            <td><%= rand(10..20) %></td>
+          </tr>
+          <tr>
+            <th>Modules</th>
+            <td><%= @course.modules.count %></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="button is-large is-fullwidth is-outlined is-link">
+        <span>Enroll Now</span>
+      </button>
+    </div>
+  </aside>
+</div>

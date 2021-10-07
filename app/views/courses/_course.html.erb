@@ -3,7 +3,7 @@
     <div class="level">
       <div class="level-left">
         <h3 class="title is-size-4 has-text-weight-normal">
-          <%= link_to course.title, '#' %>
+          <%= link_to course.title, course %>
         </h3>
       </div>
       <div class="level-right">
@@ -27,16 +27,11 @@
               <span class="tag is-success is-light mr-3"><%= course.status %></span>
             <% end %>
             <%= link_to 'Edit', edit_course_path(course) %>
-            <%= link_to 'Delete', course_path(course), method: :delete, data: {confirm: 'Are you sure?'}, class: 'mx-3' %>
-            <%= link_to 'Edit Modules', '#' %>
+            <%= link_to 'Delete', course_path(course), method: :delete, data: {confirm: 'Are you sure?'}, class: 'ml-3' %>
           <% end %>
         <% end %>
         <% if is_home_page? %>
-          <% if course.price > 0 %>
-            <span class="is-size-5 tag is-danger is-light"><%= number_to_currency(course.price) %></span>
-          <% else %>
-            <span class="tag is-light is-danger has-text-weight-light is-uppercase is-family-secondary has-text-danger">Free</span>
-          <% end %>
+          <%= course_price(course) %>
         <% end %>
       </div>
     </div>

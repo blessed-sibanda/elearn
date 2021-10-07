@@ -1,0 +1,5 @@
+<% if course.price > 0 %>
+  <span class="is-size-5 tag is-danger is-light"><%= number_to_currency(course.price) %></span>
+<% else %>
+  <span class="tag is-light is-danger has-text-weight-light is-uppercase is-family-secondary has-text-danger">Free</span>
+<% end %>

@@ -1,7 +1,11 @@
 class CoursesController < ApplicationController
   layout "dashboard"
-  before_action :set_course, only: [:edit, :update, :destroy]
+  before_action :set_course, only: [:edit, :update, :destroy, :show]
   before_action :verify_authorized, only: [:edit, :update, :destroy]
+
+  def show
+    render layout: "application"
+  end
 
   def new
     @course = Course.new
@@ -39,7 +43,7 @@ class CoursesController < ApplicationController
   end
 
   def set_course
-    @course = Course.find(params[:id])
+    @course = Course.find_by_slug(params[:slug])
   end
 
   def verify_authorized

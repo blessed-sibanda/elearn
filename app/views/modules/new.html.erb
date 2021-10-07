@@ -1,0 +1,21 @@
+<div class="columns">
+  <aside class="column is-one-quarter-desktop">
+    <p class="menu-label">Modules</p>
+    <ul class="menu-list">
+      <li>
+        <%= link_to 'All Modules', course_modules_path(@course) %>
+      </li>
+      <% @course.modules.each do |m| %>
+        <li>
+          <%= link_to m.title, edit_course_module_path(m.course, m) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+  <main class='column is-three-quarters-tablet'>
+    <h1 class="title"><%= @course.title %></h1>
+    <hr>
+    <h2 class="subtitle is-size-3 has-text-weight-light">New Module</h2>
+    <%= render 'form' %>
+  </main>
+</div>
