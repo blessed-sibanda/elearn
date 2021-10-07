@@ -1,8 +1,15 @@
 <div class="card is-fullwidth my-3 pt-2">
   <div class="card-content pt-3 pb-4">
-    <h3 class="title is-size-4 has-text-weight-normal">
-      <%= link_to course.title, '#' %>
-    </h3>
+    <div class="level">
+      <div class="level-left">
+        <h3 class="title is-size-4 has-text-weight-normal">
+          <%= link_to course.title, '#' %>
+        </h3>
+      </div>
+      <div class="level-right">
+        <p class="is-pulled-right is-help tag is-info is-light"><%= course.created_at.strftime('%H:%M, %d %b %Y') %></p>
+      </div>
+    </div>
     <div class="level">
       <div class="level-left">
         <p class='mt-1'>
