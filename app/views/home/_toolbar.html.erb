@@ -1,16 +1,18 @@
 <nav class="level">
   <div class="level-left">
     <div class="level-item is-hidden-tablet-only">
-      <div class="field has-addons">
-        <p class="control">
-          <input class="input is-medium" type="text" placeholder="Course title, subject etc...">
-        </p>
-        <p class="control">
-          <button class="button is-link is-medium">
-            Search
-          </button>
-        </p>
-      </div>
+      <%= form_for :search, method: :get do %>
+        <div class="field has-addons">
+          <p class="control">
+            <%= text_field_tag :keywords, nil, placeholder: "Course title, overview etc...", class: 'input is-medium' %>
+          </p>
+          <p class="control">
+            <button type='submit' class="button is-link is-medium">
+              Search
+            </button>
+          </p>
+        </div>
+      <% end %>
     </div>
   </div>
   <div class="level-right">

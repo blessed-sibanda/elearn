@@ -24,6 +24,12 @@
 #  fk_rails_...  (subject_id => subjects.id)
 #
 class Course < ApplicationRecord
+  include PgSearch::Model
+  pg_search_scope :search,
+                  against: { title: "A", overview: "B" },
+                  using: {
+                    tsearch: { prefix: true },
+                  }
   self.per_page = 8
   belongs_to :subject
   belongs_to :owner, class_name: "User"
@@ -37,7 +43,7 @@ class Course < ApplicationRecord
        }
 
   scope :published, -> { where(status: "Published") }
-  scope :by_status, ->(status = nil) { where(status: status&.capitalize) if statuses.keys.include?(status&.capitalize) }
+  scope :by_status, ->(status = nil) { where(status: status.capitalize) if statuses.keys.include?(status&.capitalize) }
 
   def is_draft?
     status == "Draft"
