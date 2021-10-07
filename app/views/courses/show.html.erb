@@ -9,7 +9,7 @@
       </div>
       <div class="level-right">
         <% if policy(@course).manage? %>
-          <%= link_to 'New Module', new_course_module_path(@course), class: 'button is-outlined is-primary' %>
+          <%= link_to 'New Module', new_course_module_path(@course), class: 'button is-link' %>
         <% end %>
       </div>
     </div>
@@ -42,7 +42,10 @@
         </tbody>
       </table>
       <% if policy(@course).enroll? %>
-        <%= link_to 'Enroll Now', enroll_course_path, class: 'button is-large is-fullwidth is-outlined is-link', method: :post  %>
+        <div class="mb-3">
+          <%= course_price(@course) %>
+        </div>
+        <%= link_to 'Enroll Now', enroll_course_path, class: 'button is-medium is-fullwidth is-outlined is-link', method: :post  %>
       <% end %>
     </aside>
   </div>

@@ -7,7 +7,7 @@
       </li>
       <% @course.modules.each do |m| %>
         <li>
-          <%= link_to m.title, edit_course_module_path(m.course, m) %>
+          <%= link_to m.title, edit_course_module_path(m.course, m), class: "#{'is-active' if m.id.to_s == params[:id]}" %>
         </li>
       <% end %>
     </ul>

@@ -5,6 +5,10 @@ class CourseModulePolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    record.course.students.include?(user) || record.course.owner == user
+  end
+
   def manage?
     record.course.owner == user
   end

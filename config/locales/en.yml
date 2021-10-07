@@ -34,3 +34,5 @@ en:
   pundit:
     course_policy:
       manage?: 'Only the course instructor is authorized to perform this action'
+    course_module_policy:
+      show?: 'Only enrolled students can access the course modules'

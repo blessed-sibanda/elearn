@@ -20,6 +20,7 @@ class ModulesController < ApplicationController
   end
 
   def show
+    authorize @module
   end
 
   def edit
