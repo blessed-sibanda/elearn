@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   layout "dashboard"
-  before_action :set_course, only: [:edit, :update, :destroy, :show]
+  before_action :set_course, only: [:edit, :update, :destroy, :show, :enroll]
   before_action :verify_authorized, only: [:edit, :update, :destroy]
 
   def show
@@ -12,6 +12,9 @@ class CoursesController < ApplicationController
   end
 
   def enroll
+    authorize @course
+    current_user.joined_courses << @course
+    redirect_to @course, notice: "You have successfully enrolled to '#{@course.title}'"
   end
 
   def create

@@ -33,7 +33,7 @@
           </tr>
           <tr>
             <th>Students</th>
-            <td><%= rand(10..20) %></td>
+            <td><%= @course.students.count %></td>
           </tr>
           <tr>
             <th>Modules</th>
@@ -41,9 +41,8 @@
           </tr>
         </tbody>
       </table>
-      <button class="button is-large is-fullwidth is-outlined is-link">
-        <span>Enroll Now</span>
-      </button>
-    </div>
-  </aside>
-</div>
+      <% if policy(@course).enroll? %>
+        <%= link_to 'Enroll Now', enroll_course_path, class: 'button is-large is-fullwidth is-outlined is-link', method: :post  %>
+      <% end %>
+    </aside>
+  </div>

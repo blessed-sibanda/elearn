@@ -38,6 +38,8 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true, length: { in: 2..20 }
 
   has_many :courses, foreign_key: "owner_id"
+  has_many :enrollments
+  has_many :joined_courses, through: :enrollments, source: :course
 
   def full_name
     first_name + " " + last_name

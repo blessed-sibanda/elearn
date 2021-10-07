@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get "messages" => :messages, as: :dashboard_messages
     end
     resources :courses, except: :index, param: :slug, path: "c" do
+      member { post :enroll }
       resources :modules, except: :index, path: "m"
     end
   end

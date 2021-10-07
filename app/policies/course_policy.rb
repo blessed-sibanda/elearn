@@ -8,4 +8,12 @@ class CoursePolicy < ApplicationPolicy
   def manage?
     record.owner == user
   end
+
+  def enroll?
+    if record.owner == user || record.students.include?(user)
+      false
+    else
+      true
+    end
+  end
 end

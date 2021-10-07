@@ -34,6 +34,8 @@ class Course < ApplicationRecord
   belongs_to :subject
   belongs_to :owner, class_name: "User"
   has_many :modules, class_name: "CourseModule"
+  has_many :enrollments
+  has_many :students, through: :enrollments, source: :user
 
   validates :title, :overview, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0 }
