@@ -45,7 +45,7 @@ class ModulesController < ApplicationController
   end
 
   def course_module_params
-    params.require(:course_module).permit(:title, :description, :content)
+    params.require(:course_module).permit(:title, :description, :content, :video_url)
   end
 
   def verify_authorized

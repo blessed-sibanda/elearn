@@ -6,6 +6,7 @@
 #  description :text
 #  order       :integer
 #  title       :string
+#  video_url   :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  course_id   :bigint           not null

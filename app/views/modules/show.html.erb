@@ -7,7 +7,8 @@
       </li>
       <% @course.modules.each do |m| %>
         <li>
-          <%= link_to course_module_path(m.course, m), class: "#{'is-active' if m.id.to_s == params[:id]}" do %>
+          <%= link_to course_module_path(m.course, m), class: "#{'is-active' if
+        m.id.to_s == params[:id]}" do %>
             <span><%= m.order %>.</span>
             <span><%= m.title %></span>
           <% end %>
@@ -15,21 +16,28 @@
       <% end %>
     </ul>
   </aside>
-  <main class='column is-three-quarters-tablet'>
+  <main class="column is-three-quarters-tablet">
     <h1 class="title"><%= @course.title %></h1>
-    <hr class='my-1'>
+    <hr class="my-1" />
     <div class="level">
       <div class="level-left">
-        <h2 class="subtitle is-size-3 has-text-weight-light"><%= @module.title %></h2>
+        <h2 class="subtitle is-size-3 has-text-weight-light">
+          <%= @module.title %>
+        </h2>
       </div>
       <% if policy(@module).manage? %>
         <div class="level-right">
-          <%= link_to 'Edit', edit_course_module_path(@course, @module), class: 'button is-link' %>
+          <%= link_to 'Edit', edit_course_module_path(@course, @module), class: 'button
+        is-link' %>
         </div>
       <% end %>
     </div>
     <div><%= @module.description %></div>
-    <hr>
+    <hr />
+    <% unless @module.video_url&.blank? %>
+      <h1>Here</h1>
+      <video src="<%= @module.video_url %>" controls ></video>
+    <% end %>
     <div><%= @module.content %></div>
   </main>
 </div>
