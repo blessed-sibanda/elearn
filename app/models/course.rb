@@ -33,6 +33,7 @@ class Course < ApplicationRecord
   self.per_page = 8
   belongs_to :subject
   belongs_to :owner, class_name: "User"
+  has_many :modules, class_name: "CourseModule"
 
   validates :title, :overview, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0 }
