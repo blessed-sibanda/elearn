@@ -3,7 +3,7 @@
     <p class="menu-label">Subject</p>
     <ul class="menu-list">
       <li>
-        <%= link_to 'All', root_path, 
+        <%= link_to 'All', root_path,
           class: "#{'is-active' if @subject.nil?}"  %>
       </li>
       <%= render @subjects %>
@@ -11,7 +11,7 @@
   </aside>
   <main class='column is-three-quarters-tablet'>
     <%= render 'toolbar' %>
-    <%= render @courses %>
+    <div id="courses"><%= render @courses %></div>
     <%= will_paginate @courses, renderer: BulmaPagination::Rails %>
   </main>
 </div>
