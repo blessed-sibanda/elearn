@@ -21,6 +21,6 @@ class Subject < ApplicationRecord
   end
 
   scope :with_courses, -> {
-          joins(:courses).group(:id)
+          joins(:courses).group(:id).where("courses.status = ?", 1)
         }
 end

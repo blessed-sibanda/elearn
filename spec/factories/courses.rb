@@ -4,7 +4,9 @@
 #
 #  id         :bigint           not null, primary key
 #  overview   :text             not null
+#  price      :decimal(8, 2)    default(0.0)
 #  slug       :string           not null
+#  status     :integer          default("Draft"), not null
 #  title      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

@@ -3,10 +3,35 @@
     <h3 class="title is-size-4 has-text-weight-normal">
       <%= link_to course.title, '#' %>
     </h3>
-    <p class='mt-1'>
-      <%= link_to course.subject.title, 
+    <div class="level">
+      <div class="level-left">
+        <p class='mt-1'>
+          <%= link_to course.subject.title, 
               subject_courses_path(course.subject.slug) %>.
-      Instructor: <%= link_to course.owner.full_name, '#' %>
-    </p>
+          Instructor: <%= link_to course.owner.full_name, '#' %>
+        </p>
+      </div>
+      <div class="level-right">
+        <% if is_dashboard_page? %>
+          <% if policy(course).manage? %>
+            <% if course.is_draft? %>
+              <span class="tag is-light is-danger mr-3"><%= course.status %></span>
+            <% else %>
+              <span class="tag is-success is-light mr-3"><%= course.status %></span>
+            <% end %>
+            <%= link_to 'Edit', edit_course_path(course) %>
+            <%= link_to 'Delete', course_path(course), method: :delete, data: {confirm: 'Are you sure?'}, class: 'mx-3' %>
+            <%= link_to 'Edit Modules', '#' %>
+          <% end %>
+        <% end %>
+        <% if is_home_page? %>
+          <% if course.price > 0 %>
+            <span class="is-size-5 tag is-danger is-light"><%= number_to_currency(course.price) %></span>
+          <% else %>
+            <span class="tag is-light is-danger has-text-weight-light is-uppercase is-family-secondary has-text-danger">Free</span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

@@ -4,9 +4,12 @@
       <h1 class='title'>Courses</h1>
     </div>
   </div>
-  <div class="level-left">
+  <div class="level-right">
+    <div class="level-item"><%= link_to 'All', dashboard_courses_path, class: 'has-text-weight-bold' %></div>
+    <div class="level-item"><%= link_to 'Published', dashboard_courses_path(status: 'published'), class: 'has-text-weight-bold' %></div>
+    <div class="level-item"><%= link_to 'Draft', dashboard_courses_path(status: 'draft'), class: 'has-text-weight-bold' %></div>
     <div class="level-item">
-      <%= link_to 'Create Course', new_course_path, class: 'button is-primary' %>
+      <%= link_to 'New', new_course_path, class: 'button is-primary' %>
     </div>
   </div>
 </div>

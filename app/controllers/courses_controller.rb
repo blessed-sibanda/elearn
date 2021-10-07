@@ -1,5 +1,7 @@
 class CoursesController < ApplicationController
   layout "dashboard"
+  before_action :set_course, only: [:edit, :update, :destroy]
+  before_action :verify_authorized, only: [:edit, :update, :destroy]
 
   def new
     @course = Course.new
@@ -14,9 +16,33 @@ class CoursesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @course.update(course_params)
+      redirect_to dashboard_courses_url, notice: "Course updated successfully"
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @course.destroy
+    redirect_to dashboard_courses_url, notice: "Course deleted successfully"
+  end
+
   private
 
   def course_params
-    params.require(:course).permit(:title, :subject_id, :overview)
+    params.require(:course).permit(:title, :subject_id, :overview, :status, :price)
+  end
+
+  def set_course
+    @course = Course.find(params[:id])
+  end
+
+  def verify_authorized
+    authorize @course, :manage?
   end
 end

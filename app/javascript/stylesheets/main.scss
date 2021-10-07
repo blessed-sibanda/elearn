@@ -1,10 +1,10 @@
 @import '~bulma/sass/utilities/initial-variables';
-@import '~bulmaswatch/pulse/_variables';
+@import '~bulmaswatch/sandstone/_variables';
 
-$menu-item-active-background-color: $link;
+// $menu-item-active-background-color: $link;
 @import '~bulma';
 
-@import '~bulmaswatch/pulse/_overrides';
+@import '~bulmaswatch/sandstone/_overrides';
 
 .field_with_errors {
   input[type='text'],

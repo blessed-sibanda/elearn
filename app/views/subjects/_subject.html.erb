@@ -3,7 +3,7 @@
             class: "#{'is-active' if subject==@subject}" do %>
     <span><%= subject.title %></span>
     <span class="help is-dark is-pulled-right">
-      <%= subject.courses.count %>
+      <%= subject.courses.published.count %>
     </span>
   <% end %>
 </li>

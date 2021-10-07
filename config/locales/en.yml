@@ -30,4 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  hello: 'Hello world'
+  pundit:
+    course_policy:
+      manage?: 'Only the course instructor is authorized to perform this action'

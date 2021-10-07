@@ -3,7 +3,9 @@ class DashboardController < ApplicationController
   end
 
   def courses
-    @courses = Course.where(owner: current_user).page(params[:page])
+    @courses = Course.by_status(params["status"])
+      .where(owner: current_user)
+      .page(params[:page]).order(created_at: :desc)
   end
 
   def students

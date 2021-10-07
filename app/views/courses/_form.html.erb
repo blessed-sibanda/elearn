@@ -8,10 +8,41 @@
     <%= f.label :overview, class: 'label' %>
     <%= f.text_area :overview, class: 'textarea' %>
   </div>
-  <div class="field">
-    <%= f.label :subject, class: 'label' %>
-    <div class="select is-medium">
-      <%= f.collection_select :subject_id, Subject.order(:title), :id, :title %>
+  <div class="level">
+    <div class="level-left">
+      <div class="level-item">
+        <div class="field">
+          <%= f.label :price, class: 'label' %>
+          <div class="field has-addons">
+            <p class="control">
+              <span class="select is-medium">
+                <select><option>US$</option></select>
+              </span>
+            </p>
+            <div class="control">
+              <%= f.text_field :price, class: 'input is-medium' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="level-right">
+      <div class="level-item">
+        <div class="field">
+          <%= f.label :subject, class: 'label' %>
+          <div class="select is-medium">
+            <%= f.collection_select :subject_id, Subject.order(:title), :id, :title %>
+          </div>
+        </div>
+      </div>
+      <div class="level-item">
+        <div class="field">
+          <%= f.label :status, class: 'label' %>
+          <div class="select is-medium">
+            <%= f.select :status, Course.statuses.keys %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="field">

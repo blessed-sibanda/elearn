@@ -4,7 +4,9 @@
 #
 #  id         :bigint           not null, primary key
 #  overview   :text             not null
+#  price      :decimal(8, 2)    default(0.0)
 #  slug       :string           not null
+#  status     :integer          default("Draft"), not null
 #  title      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -27,6 +29,19 @@ class Course < ApplicationRecord
   belongs_to :owner, class_name: "User"
 
   validates :title, :overview, presence: true
+  validates :price, numericality: { greater_than_or_equal_to: 0 }
+
+  enum status: {
+         "Draft" => 0,
+         "Published" => 1,
+       }
+
+  scope :published, -> { where(status: "Published") }
+  scope :by_status, ->(status = nil) { where(status: status&.capitalize) if statuses.keys.include?(status&.capitalize) }
+
+  def is_draft?
+    status == "Draft"
+  end
 
   before_save do
     self.slug = title.parameterize unless slug
