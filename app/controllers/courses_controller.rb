@@ -11,6 +11,9 @@ class CoursesController < ApplicationController
     @course = Course.new
   end
 
+  def enroll
+  end
+
   def create
     @course = current_user.courses.build(course_params)
     if @course.save

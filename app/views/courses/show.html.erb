@@ -8,7 +8,9 @@
         <h2 class="subtitle is-size-3 has-text-weight-light">Modules</h2>
       </div>
       <div class="level-right">
-        <%= link_to 'New Module', new_course_module_path(@course), class: 'button is-outlined is-primary' %>
+        <% if policy(@course).manage? %>
+          <%= link_to 'New Module', new_course_module_path(@course), class: 'button is-outlined is-primary' %>
+        <% end %>
       </div>
     </div>
     <% @course.modules.each do |m| %>

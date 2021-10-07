@@ -1,12 +1,15 @@
 class ModulesController < ApplicationController
-  before_action :set_course, only: [:index, :edit, :new, :create, :show]
-  before_action :set_module, only: [:edit, :update, :show, :destroy]
+  before_action :set_course
+  before_action :set_module, except: [:new, :create]
+  before_action :verify_authorized, except: [:show, :new, :create]
 
   def new
+    authorize @course, :manage?, policy_class: CoursePolicy
     @module = CourseModule.new
   end
 
   def create
+    authorize @course, :manage?, policy_class: CoursePolicy
     @module = CourseModule.new(course_module_params)
     @module.course = @course
     if @module.save
@@ -22,6 +25,14 @@ class ModulesController < ApplicationController
   def edit
   end
 
+  def update
+    if @module.update(course_module_params)
+      redirect_to course_module_path(@module.course, @module), notice: "Module updated successfully"
+    else
+      render :edit
+    end
+  end
+
   private
 
   def set_course
@@ -34,5 +45,9 @@ class ModulesController < ApplicationController
 
   def course_module_params
     params.require(:course_module).permit(:title, :description, :content)
+  end
+
+  def verify_authorized
+    authorize @module, :manage?
   end
 end
