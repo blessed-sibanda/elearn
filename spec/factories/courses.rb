@@ -25,10 +25,13 @@
 #
 FactoryBot.define do
   factory :course do
-    title { "MyString" }
-    slug { "MyString" }
-    subject { nil }
-    overview { "MyText" }
-    owner_id { "" }
+    title { Faker::Lorem.paragraph + SecureRandom.hex(3) }
+    overview { Faker::Lorem.paragraphs.join }
+    association :owner, factory: :user, strategy: :build
+    association :subject, strategy: :build
+
+    trait :with_random_status do
+      status { Course.statuses.keys.sample }
+    end
   end
 end

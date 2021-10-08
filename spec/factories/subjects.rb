@@ -14,7 +14,6 @@
 #
 FactoryBot.define do
   factory :subject do
-    title { "MyString" }
-    slug { "MyString" }
+    title { Faker::Educator.subject + SecureRandom.hex(3) }
   end
 end

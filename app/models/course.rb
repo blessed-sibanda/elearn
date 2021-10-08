@@ -38,6 +38,7 @@ class Course < ApplicationRecord
   has_many :students, through: :enrollments, source: :user
 
   validates :title, :overview, presence: true
+  validates :title, :slug, uniqueness: true
   validates :price, numericality: { greater_than_or_equal_to: 0 }
 
   enum status: {
@@ -57,6 +58,6 @@ class Course < ApplicationRecord
   end
 
   before_save do
-    self.slug = title.parameterize unless slug
+    self.slug = title&.parameterize unless slug
   end
 end
