@@ -119,23 +119,25 @@ RSpec.describe Course, type: :model do
   end
 
   describe "search" do
-    let(:c1) {
+    let!(:c1) {
       create :course, title: "Professional Django",
                       overview: "The comprehensive guide"
     }
-    let(:c2) {
+    let!(:c2) {
       create :course, title: "Comprehensive Rails 6",
                       overview: "a complete guide"
     }
-    let(:c3) {
+    let!(:c3) {
       create :course, title: "Django for Beginners",
                       overview: "an excellent django tutorial"
     }
 
     it "should search for courses by title" do
+      expect(Course.search("Django").count).to eq(2)
       expect(Course.search("Django")).to contain_exactly(c1, c3)
+      expect(Course.search("Rails").count).to eq(1)
       expect(Course.search("Rails")).to contain_exactly(c2)
-      expect(Course.search("Lorem").any?).to be_falsy
+      expect(Course.search("Lorem").count).to eq(0)
     end
 
     it "should allow partial prefix matches" do
@@ -159,5 +161,11 @@ RSpec.describe Course, type: :model do
       expect(matches).to contain_exactly(c1, c2)
       expect(matches.first).to eq(c2)
     end
+  end
+
+  it "paginates items 8 per page" do
+    create_list :course, 30
+    expect(Course.page(1).length).to eq(8)
+    expect(Course.page(4).length).to eq(6)
   end
 end

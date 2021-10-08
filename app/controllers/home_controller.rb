@@ -14,12 +14,23 @@ class HomeController < ApplicationController
       end
     else
       search_results = Course.search(keywords).published
-      @courses = Course.where(id: search_results.ids).page(params["page"]).order(ordering)
     end
 
     respond_to do |format|
-      format.js { render @courses }
-      format.html
+      format.js do
+        if search_results
+          @courses = Course.where(id: search_results.ids)
+            .page(params["page"]).order(ordering)
+        end
+        render @courses
+      end
+      format.html do
+        if search_results
+          # dont apply ordering to search results
+          # because the search already ranked them
+          @courses = search_results.page(params["page"])
+        end
+      end
     end
   end
 end

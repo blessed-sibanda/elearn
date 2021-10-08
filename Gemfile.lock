@@ -65,6 +65,9 @@ GEM
     annotate (3.1.1)
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 14.0)
+    apparition (0.6.0)
+      capybara (~> 3.13, < 4)
+      websocket-driver (>= 0.6.5)
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.9.1)
@@ -80,6 +83,7 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     childprocess (3.0.0)
+    coderay (1.1.3)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
     devise (4.8.0)
@@ -107,6 +111,8 @@ GEM
       ruby-vips (>= 2.0.17, < 3)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
+    launchy (2.5.0)
+      addressable (~> 2.7)
     listen (3.7.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -129,6 +135,12 @@ GEM
     pg_search (2.3.5)
       activerecord (>= 5.2)
       activesupport (>= 5.2)
+    pry (0.13.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    pry-byebug (3.9.0)
+      byebug (~> 11.0)
+      pry (~> 0.13.0)
     public_suffix (4.0.6)
     puma (5.5.0)
       nio4r (~> 2.0)
@@ -259,17 +271,19 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  apparition
   bootsnap (>= 1.4.4)
-  byebug
   capybara (>= 3.26)
   devise
   factory_bot_rails
   faker
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
+  launchy
   listen (~> 3.3)
   pg (~> 1.1)
   pg_search
+  pry-byebug
   puma (~> 5.0)
   pundit
   rack-mini-profiler (~> 2.0)
