@@ -5,7 +5,7 @@
     </div>
     <div class="level-item">
       <div class="select">
-        <select @change="filterCourses" v-model="field">
+        <select name="field" @change="filterCourses" v-model="field">
           <option value="created_at">Date</option>
           <option value="price">Price</option>
         </select>
@@ -13,7 +13,7 @@
     </div>
     <div class="level-item">
       <div class="select">
-        <select @change="filterCourses" v-model="order">
+        <select name="order" @change="filterCourses" v-model="order">
           <option value="asc">Asc</option>
           <option value="desc">Desc</option>
         </select>
