@@ -1,27 +1,34 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe CoursePolicy, type: :policy do
-  let(:user) { User.new }
+  let(:user) { build :user }
+  let(:course) { build :course }
 
   subject { described_class }
 
-  permissions ".scope" do
-    pending "add some examples to (or delete) #{__FILE__}"
+  permissions :enroll? do
+    context "user is course owner" do
+      it "denies access" do
+        expect(subject).not_to permit(course.owner, course)
+      end
+    end
+    context "user is not course owner" do
+      it "denies access if user is already enrolled" do
+        course.students << user
+        expect(subject).not_to permit(user, course)
+      end
+      it "grants access if user is not enrolled" do
+        expect(subject).to permit(user, course)
+      end
+    end
   end
 
-  permissions :show? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
-  permissions :create? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
-  permissions :update? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
-  permissions :destroy? do
-    pending "add some examples to (or delete) #{__FILE__}"
+  permissions :manage? do
+    it "denies access if user is not course owner" do
+      expect(subject).not_to permit(user, course)
+    end
+    it "grants access if user is course owner" do
+      expect(subject).to permit(course.owner, course)
+    end
   end
 end
