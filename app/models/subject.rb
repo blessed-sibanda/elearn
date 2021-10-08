@@ -13,6 +13,7 @@
 #  index_subjects_on_slug  (slug) UNIQUE
 #
 class Subject < ApplicationRecord
+  validates :title, presence: true, uniqueness: true
   validates :slug, uniqueness: true
   has_many :courses
 

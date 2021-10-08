@@ -33,5 +33,13 @@ FactoryBot.define do
     trait :with_random_status do
       status { Course.statuses.keys.sample }
     end
+
+    trait :published do
+      status { 'Published' }
+    end
+
+    trait :draft do
+      status { 'Draft' }
+    end
   end
 end
