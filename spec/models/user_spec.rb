@@ -28,8 +28,35 @@
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "associations" do
+    it { should have_many(:courses).with_foreign_key("owner_id") }
+    it { should have_many(:enrollments) }
+    it {
+      should have_many(:joined_courses)
+               .through(:enrollments).source(:course)
+    }
+  end
+
+  describe "validations" do
+    it { should validate_presence_of(:first_name) }
+    it { should validate_presence_of(:last_name) }
+    it {
+      should validate_length_of(:first_name)
+               .is_at_least(2).is_at_most(20)
+    }
+    it {
+      should validate_length_of(:last_name)
+               .is_at_least(2).is_at_most(20)
+    }
+  end
+
+  describe "#full_name" do
+    it "should return first name and last name" do
+      user = create(:user)
+      expect(user.full_name).to eq("#{user.first_name} #{user.last_name}")
+    end
+  end
 end
