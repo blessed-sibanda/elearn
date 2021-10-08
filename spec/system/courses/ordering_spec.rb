@@ -19,6 +19,7 @@ RSpec.describe "Ordering Courses" do
 
     courses = Course.page(1).published.order("created_at desc")
 
+    sleep 0.1
     expect(find("#courses").first(".card h3.title").text).to eq(courses.first.title)
     expect(find_all("#courses > .card h3.title").last.text).to eq(courses.last.title)
   end
@@ -28,7 +29,7 @@ RSpec.describe "Ordering Courses" do
     select "Asc", from: "order"
 
     courses = Course.page(1).published.order("created_at asc")
-
+    sleep 0.1
     expect(find("#courses").first(".card h3.title").text).to eq(courses.first.title)
     expect(find_all("#courses > .card h3.title").last.text).to eq(courses.last.title)
   end
@@ -38,6 +39,7 @@ RSpec.describe "Ordering Courses" do
 
     courses = Course.page(1).published.order("price desc")
 
+    sleep 0.1
     expect(find("#courses").first(".card h3.title").text).to eq(courses.first.title)
     expect(find_all("#courses > .card h3.title").last.text).to eq(courses.last.title)
   end
@@ -48,6 +50,7 @@ RSpec.describe "Ordering Courses" do
 
     courses = Course.page(1).published.order("price asc")
 
+    sleep 0.1
     expect(find("#courses").first(".card h3.title").text).to eq(courses.first.title)
     expect(find_all("#courses > .card h3.title").last.text).to eq(courses.last.title)
   end
