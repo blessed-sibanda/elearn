@@ -22,9 +22,8 @@
 #
 FactoryBot.define do
   factory :course_module do
-    course { nil }
-    title { "MyString" }
-    description { "MyText" }
-    order { 1 }
+    title { Faker::Lorem.paragraph + SecureRandom.hex(3) }
+    description { Faker::Lorem.paragraphs.join }
+    association :course, strategy: :build
   end
 end
